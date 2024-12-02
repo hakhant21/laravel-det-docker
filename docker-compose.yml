@@ -62,7 +62,7 @@ services:
     command: ["composer"]
   
   queue:
-    image: php:8.1-fpm-alpine
+    image: php:8.2-fpm-alpine
     container_name: queue
     working_dir: /var/www/html
     volumes:
