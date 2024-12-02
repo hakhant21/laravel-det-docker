@@ -65,6 +65,9 @@ docker-compose exec app php artisan
 # npm service
 docker-compose exec app npm install / run dev / run build 
 
+# running inside container 
+docker-compose exec app sh
+
 # shutting down container
 docker-compose down
 ```
