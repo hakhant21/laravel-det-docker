@@ -36,8 +36,6 @@ WORKDIR /var/www/html
 # Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Expose ports
 EXPOSE 9000
 
-# Start PHP-FPM when the container runs
 CMD ["php-fpm"]

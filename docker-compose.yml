@@ -29,8 +29,9 @@ services:
       - mysql
 
   mysql:
-    image: mysql:8.0
+    image: mysql/mysql-server:latest
     container_name: mysql
+
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -38,7 +39,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     ports:
       - "3306:${MYSQL_PORT}"
     restart: unless-stopped
@@ -58,6 +59,7 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
+    
       
 
   composer:
