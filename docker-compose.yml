@@ -8,6 +8,8 @@ services:
       - ./supervisor/supervisord.conf:/etc/supervisord.conf
     ports:
       - "9000:9000"
+      - "8080:8080"
+      - "5173:5173"
     depends_on:
       - mysql
       - redis
