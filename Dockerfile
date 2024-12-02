@@ -33,6 +33,11 @@ RUN apk --no-cache add \
 # Set working directory
 WORKDIR /var/www/html
 
+RUN chmod -R 755 /var/www/html/public
+
+# Set permissions for www-data user
+RUN chown -R www-data:www-data /var/www/html/public
+
 # Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 

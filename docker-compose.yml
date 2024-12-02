@@ -1,6 +1,3 @@
-networks:
-  detpos:
-
 services:
   app:
     build:
@@ -96,3 +93,7 @@ services:
 
 volumes:
   mysql-data:
+
+networks:
+  detpos:
+    driver: bridge
