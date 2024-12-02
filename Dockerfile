@@ -3,10 +3,6 @@ FROM php:8.2-fpm-alpine
 
 # Install dependencies
 RUN apk --no-cache add \
-    nginx \
-    bash \
-    git \
-    curl \
     libpng-dev \
     libjpeg-turbo-dev \
     libwebp-dev \
@@ -25,10 +21,9 @@ RUN apk --no-cache add \
     make \
     autoconf \
     libc-dev \
-    bash \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp --with-xpm \
-    && docker-php-ext-install gd pdo pdo_mysql opcache zip \
-    && docker-php-ext-enable opcache \
+    && docker-php-ext-install gd pdo pdo_mysql zip pcntl \
+    && docker-php-ext-enable pcntl \
     && pecl install redis \
     && docker-php-ext-enable redis \
     && rm -rf /var/cache/apk/* /tmp/* \
