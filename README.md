@@ -25,11 +25,12 @@ git clone https://github.com/hakhant21/laravel-det-docker.git
 cp .env.example .env
 
 # for docker 
-MYSQL_DATABASE=detpos
+MYSQL_DATABASE=fuel_pos
+MYSQL_HOST=mysql
 MYSQL_PORT=3306
-MYSQL_USER=root
-MYSQL_PASSWORD=root
-MYSQL_ROOT_PASSWORD=password
+MYSQL_USER=detpos
+MYSQL_PASSWORD=asdffdsa
+MYSQL_ROOT_PASSWORD=asdffdsa
 
 # then go to src and update .env file like what you create above .env for laravel
 cp .env.example .env
@@ -37,9 +38,9 @@ cp .env.example .env
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
-DB_DATABASE=detpos
-DB_USERNAME=root
-DB_PASSWORD=root
+DB_DATABASE=fuel_pos
+DB_USERNAME=detpos
+DB_PASSWORD=asdffdsa
 
 # go to src and run
 composer install
