@@ -1,3 +1,6 @@
+networks:
+  detpos:
+
 services:
   app:
     build:
@@ -14,6 +17,8 @@ services:
       - mysql
       - redis
       - nginx
+    networks:
+      - detpos
     command: ["supervisord", "-c", "/etc/supervisord.conf"]
 
   nginx:
@@ -27,11 +32,12 @@ services:
     restart: unless-stopped
     depends_on:
       - mysql
+    networks:
+      - detpos
 
   mysql:
     image: mysql/mysql-server:latest
     container_name: mysql
-
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -43,12 +49,16 @@ services:
     ports:
       - "3306:${MYSQL_PORT}"
     restart: unless-stopped
+    networks:
+      - detpos
 
   redis:
     image: redis:alpine
     container_name: redis
     ports:
       - "6379:6379"
+    networks:
+      - detpos
 
   mosquitto:
     image: eclipse-mosquitto
@@ -60,8 +70,6 @@ services:
       - "1883:1883"
       - "9001:9001"
     
-      
-
   composer:
     image: composer:latest
     container_name: composer
@@ -69,6 +77,8 @@ services:
     volumes:
       - ./src:/var/www/html
     command: ["composer"]
+    networks:
+      - detpos
   
   queue:
     image: php:8.2-fpm-alpine
@@ -80,6 +90,8 @@ services:
       - mysql
       - redis
     command: ["php", "artisan", "queue:work"]
+    networks:
+      - detpos
 
 volumes:
   mysql-data:
