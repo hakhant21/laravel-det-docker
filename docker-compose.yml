@@ -17,9 +17,10 @@ services:
       - mysql
       - redis
       - nginx
+    restart: unless-stopped
+    command: ["supervisord", "-c", "/etc/supervisord.conf"]
     networks:
       - detpos
-    command: ["supervisord", "-c", "/etc/supervisord.conf"]
 
   nginx:
     image: nginx:alpine
