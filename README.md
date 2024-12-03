@@ -42,32 +42,35 @@ DB_DATABASE=fuel_pos
 DB_USERNAME=detpos
 DB_PASSWORD=asdffdsa
 
-# go to src and run
-composer install
-
-# generate key
-php artisan key:generate
-
-# real time reverb install 
-php artisan reverb:install 
 ```
 
-## Build and Start the Containers
-
+2. Navigate to the project directory
 ```bash
+cd path/to/laravel-det-docker
+
+# build and run the container
 docker-compose up -d --build
 
-# composer service
-docker-compose run --rm composer
-
-# artisan service
-docker-compose exec app php artisan
-
-# npm service
-docker-compose exec app npm install / run dev / run build 
-
-# running inside container 
+# go into container 
 docker-compose exec app sh
+
+# install composer
+composer install
+
+# npm install and build
+npm install && npm run build
+
+# key generate
+php artisan key:generate
+
+# migrate database
+php artisan migrate
+
+# link storage
+php artisan storage:link
+
+# give permission to storage
+chmod -R 777 storage
 
 # shutting down container
 docker-compose down
