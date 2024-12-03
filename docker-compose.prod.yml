@@ -57,16 +57,20 @@ services:
       - "6379:6379"
     networks:
       - detpos
+    restart: unless-stopped
 
   mosquitto:
     image: eclipse-mosquitto
     container_name: mosquitto
     volumes:
-      - ./mosquitto/mosquitto.conf:/etc/mosquitto/config/mosquitto.conf
-      - ./mosquitto/passwd:/etc/mosquitto/config/passwd
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./mosquitto/passwd:/mosquitto/config/passwd
     ports:
       - "1883:1883"
       - "9001:9001"
+    networks:
+      - detpos
+    restart: unless-stopped
     
   composer:
     image: composer:latest

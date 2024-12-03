@@ -42,7 +42,7 @@ class Broker
     public function subscribe(string $topic, callable $callback): void
     {
         try {
-            $this->client->subscribe($topic, $callback, 0);
+            $this->client->subscribe($topic, $callback);
 
             echo 'Subscribed to topic: ' . $topic . PHP_EOL;
         } catch (MqttClientException $e) {
