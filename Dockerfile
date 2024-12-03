@@ -35,11 +35,6 @@ WORKDIR /var/www/html
 
 RUN chmod -R 755 /var/www/html
 
-# Set permissions for www-data user
-RUN chown -R www-data:www-data /var/www/html
-
-RUN chmod -R 777 /var/www/html/storage
-
 # Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
