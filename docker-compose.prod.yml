@@ -43,7 +43,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./mysql/data:/var/lib/mysql
     ports:
       - "3306:${MYSQL_PORT}"
     restart: unless-stopped
@@ -62,8 +62,8 @@ services:
     image: eclipse-mosquitto
     container_name: mosquitto
     volumes:
-      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-      - ./mosquitto/passwd:/mosquitto/config/passwd
+      - ./mosquitto/mosquitto.conf:/etc/mosquitto/config/mosquitto.conf
+      - ./mosquitto/passwd:/etc/mosquitto/config/passwd
     ports:
       - "1883:1883"
       - "9001:9001"
