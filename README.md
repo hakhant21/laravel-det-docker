@@ -48,8 +48,11 @@ DB_PASSWORD=asdffdsa
 ```bash
 cd path/to/laravel-det-docker
 
-# build and run the container
+# build and run the container for development
 docker-compose up -d --build
+
+# build and run the container for production
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 
 # go into container 
 docker-compose exec app sh
